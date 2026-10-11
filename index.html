@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For Mugdha ✨ A Peace Treaty From Your Best Friend</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <!-- Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+
+  <!-- Floating particles container -->
+  <div id="particles-container"></div>
+
+  <!-- ENVELOPE MODAL (First Experience) -->
+  <div id="envelope-overlay" class="overlay">
+    <div class="envelope-card">
+      <div class="stamp">💌</div>
+      <div class="envelope-badge">Urgent Special Delivery</div>
+      <h1 class="envelope-title">Hey Mugdha...</h1>
+      <p class="envelope-subtitle">Someone who cares about you a lot made this little corner of the internet just for you. Please open it?</p>
+      <button id="open-letter-btn" class="glow-btn">
+        <span>✨ Open Special Message & Play Song ✨</span>
+      </button>
+      <p class="envelope-hint">Turn your volume up 🎵</p>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT CONTAINER (revealed after opening) -->
+  <div id="main-content" class="main-wrapper hidden">
+
+    <!-- HTML5 Audio Element (Direct local audio file - starts at 0:23) -->
+    <audio id="bg-audio" preload="auto" loop>
+      <source src="song.webm#t=23" type="audio/webm">
+    </audio>
+
+    <!-- FLOATING MUSIC PLAYER BAR -->
+    <div class="music-pill">
+      <div class="music-disc" id="music-disc">
+        🎵
+      </div>
+      <div class="music-info">
+        <span class="music-title">Maafi 🎶</span>
+        <span class="music-artist">Shreya Ghoshal (0:23)</span>
+      </div>
+      <button id="toggle-music-btn" class="music-ctrl-btn" title="Pause / Play">⏸️</button>
+    </div>
+
+    <!-- HERO SECTION -->
+    <header class="hero-section">
+      <div class="sparkle-tag">🌸 To the Best Friend in the Universe 🌸</div>
+      <h1 class="hero-title">Mugdha, Maan Jao Na... 🥺</h1>
+      <p class="hero-desc">The world is seriously boring and gloomy when you're upset with me. I'm truly sorry, and I miss your laughter!</p>
+
+      <!-- DEDICATED MUSIC PLAYER CARD -->
+      <div class="song-card">
+        <div class="song-card-header">
+          <div class="song-badge">Dedicated To Mugdha • Starts at 0:23</div>
+          <div class="sound-wave" id="sound-wave">
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+        </div>
+        <div class="song-details">
+          <div class="song-cover-art">🎶</div>
+          <div class="song-meta">
+            <h3 class="song-track-name">Maafi</h3>
+            <p class="song-artist-name">Shreya Ghoshal • Shantanu Moitra</p>
+            <p class="song-note">"Yeh gaana sirf aur sirf tere liye hai..."</p>
+          </div>
+        </div>
+        <!-- Player Controls -->
+        <div class="song-controls-bar">
+          <button id="main-play-btn" class="main-play-btn">⏸️ Pause</button>
+          <button id="restart-23-btn" class="secondary-btn" title="Replay from 0:23">⏮️ From 0:23</button>
+          <div class="volume-box">
+            <span>🔊</span>
+            <input type="range" id="volume-slider" min="0" max="1" step="0.05" value="1">
+          </div>
+          <button id="toggle-yt-video-btn" class="secondary-btn">🎬 Watch Video</button>
+        </div>
+        
+        <!-- Optional YouTube Video Embed -->
+        <div id="yt-embed-box" class="yt-embed-box hidden">
+          <iframe id="yt-iframe" width="100%" height="260" src="" title="Maafi - Shreya Ghoshal" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </div>
+
+      <!-- Mugdha's photo polaroid frame -->
+      <div class="polaroid-wrapper">
+        <div class="polaroid-pin">📌</div>
+        <div class="polaroid-frame">
+          <div class="polaroid-img-box">
+            <img src="mugdha.jpg" alt="Mugdha's Radiant Smile" class="mugdha-photo">
+          </div>
+          <div class="polaroid-caption">
+            <span class="polaroid-text">That iconic smile that lights up everything! ✨</span>
+            <span class="polaroid-sub">Please don't stay angry at me 🌸</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ANGER METER INTERACTIVE -->
+    <section class="section card-glass anger-section">
+      <div class="section-tag">📊 Live Status Check</div>
+      <h2 class="section-title">The "How Angry Is Mugdha?" Meter</h2>
+      <p class="section-subtitle">Be honest, move the slider to how mad you are at me right now:</p>
+
+      <div class="slider-box">
+        <div class="meter-emoji" id="meter-emoji">😡</div>
+        <input type="range" id="anger-slider" min="0" max="100" value="85">
+        <div class="slider-labels">
+          <span>Totally Forgiven 🥰</span>
+          <span>A Little Pouty 😒</span>
+          <span>Super Angry 🔥</span>
+        </div>
+      </div>
+      <div class="meter-feedback" id="meter-feedback">
+        "Uh oh, high danger zone! I need to apologize a thousand times and buy treats immediately! 🚨"
+      </div>
+    </section>
+
+    <!-- WHY LIFE SUCKS WITHOUT YOU -->
+    <section class="section">
+      <div class="section-tag">💔 Emergency Confession</div>
+      <h2 class="section-title">Why Life Sucks When You're Angry</h2>
+      <div class="reasons-grid">
+        <div class="reason-card">
+          <div class="reason-icon">🤐</div>
+          <h3>Zero Gossip Partner</h3>
+          <p>Who else will listen to my weird stories, unhinged rants, and silly theories? Nobody gets it like you do.</p>
+        </div>
+        <div class="reason-card">
+          <div class="reason-icon">🦗</div>
+          <h3>Unfunny Jokes</h3>
+          <p>My jokes have literally 0% laughter rate now. Even crickets are bored. I need my favorite critic back!</p>
+        </div>
+        <div class="reason-card">
+          <div class="reason-icon">🌧️</div>
+          <h3>Total Vibe Disaster</h3>
+          <p>Seeing you upset makes everything feel gray. Life is 100x brighter when you're smiling and having fun.</p>
+        </div>
+        <div class="reason-card">
+          <div class="reason-icon">🙇‍♂️</div>
+          <h3>I Own My Mistake</h3>
+          <p>I genuinely apologize from the bottom of my heart. I value you and our friendship way too much to let anything come between us.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- HEARTFELT LETTER -->
+    <section class="section letter-section">
+      <div class="letter-paper">
+        <div class="letter-header">
+          <span class="letter-to">Dear Mugdha,</span>
+          <span class="letter-date">A Special Letter Just For You</span>
+        </div>
+        <div class="letter-body">
+          <p>
+            I know I made you angry, and I know you have every right to feel hurt. But I wanted to make this page to remind you of how special you are to me.
+          </p>
+          <p>
+            Best friends argue, make silly mistakes, and sometimes say the wrong things—but at the end of the day, having you in my life is something I never take for granted. Hearing Shreya Ghoshal's song <em>"Maafi"</em> just made me think of how desperately I want to fix this and see you smile again.
+          </p>
+          <p>
+            You deserve patience, joy, lots of good food, and a friend who values you deeply. I promise to be better, listen more, and never let you feel ignored or upset.
+          </p>
+          <p class="letter-sign">
+            Forever your annoying but genuine best friend, <br>
+            <strong>Sumit</strong> ❤️
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PEACE OFFERING COUPONS -->
+    <section class="section">
+      <div class="section-tag">🎁 Peace Offerings</div>
+      <h2 class="section-title">Your Apology Treat Coupons</h2>
+      <p class="section-subtitle">Click to claim any of these non-negotiable peace offerings whenever you want:</p>
+
+      <div class="coupons-grid">
+        <div class="coupon-card" onclick="claimCoupon(this, 'Unlimited Favorite Food')">
+          <div class="coupon-cut"></div>
+          <div class="coupon-icon">🍕</div>
+          <h4>Treat of Your Choice</h4>
+          <p>Sumit buys your favorite food or dessert without a single question.</p>
+          <button class="coupon-btn">Click to Claim 🎟️</button>
+        </div>
+
+        <div class="coupon-card" onclick="claimCoupon(this, '100% Right Pass')">
+          <div class="coupon-cut"></div>
+          <div class="coupon-icon">👑</div>
+          <h4>The "Mugdha Was Right" Pass</h4>
+          <p>Can be cashed in anytime. I instantly concede that you won the argument.</p>
+          <button class="coupon-btn">Click to Claim 🎟️</button>
+        </div>
+
+        <div class="coupon-card" onclick="claimCoupon(this, 'Chai & Rant Session')">
+          <div class="coupon-cut"></div>
+          <div class="coupon-icon">☕</div>
+          <h4>100% Listening Voucher</h4>
+          <p>A full session where you vent as much as you want, and I just bring snacks & agree.</p>
+          <button class="coupon-btn">Click to Claim 🎟️</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPLIMENTS JAR -->
+    <section class="section compliments-section card-glass">
+      <div class="section-tag">✨ Instant Mood Booster</div>
+      <h2 class="section-title">The Mugdha Happiness Jar 🍯</h2>
+      <p class="section-subtitle">Whenever you're feeling down or mad, click below for a reminder of why you are amazing:</p>
+      
+      <div class="jar-display" id="jar-text">
+        "Click the button below to draw a sweet thought!"
+      </div>
+      <button class="bubble-btn" id="jar-btn" onclick="drawCompliment()">
+        🌟 Give Me Another Reason To Smile
+      </button>
+    </section>
+
+    <!-- THE ULTIMATE QUESTION (Interactive Runaway Button) -->
+    <section class="section forgive-section" id="forgive-area">
+      <div class="section-tag">🕊️ The Big Question</div>
+      <h2 class="section-title">Will You Forgive Me, Mugdha? 🥺</h2>
+      <p class="section-subtitle">Take your time, but choose wisely...</p>
+
+      <div class="buttons-arena" id="arena">
+        <button id="yes-btn" class="choice-btn yes-btn" onclick="acceptApology()">
+          Yes, I forgive you! 💕
+        </button>
+        <button id="no-btn" class="choice-btn no-btn">
+          Nope, still mad! 😤
+        </button>
+      </div>
+
+      <p id="dodging-message" class="dodge-caption"></p>
+    </section>
+
+    <!-- FORGIVENESS CELEBRATION MODAL -->
+    <div id="celebration-modal" class="modal hidden">
+      <div class="modal-card">
+        <div class="celebrate-emoji">🎉🥳💖</div>
+        <h2>YAYYY! BEST FRIENDS FOREVER! 🥂</h2>
+        <p class="celebrate-text">
+          Thank you so much, Mugdha! You just made my entire week! I promise to make it up to you with treats and never take our friendship for granted.
+        </p>
+        <div class="truce-certificate">
+          <div class="cert-title">📜 Official Friendship Peace Accord</div>
+          <p>Ratified between <strong>Mugdha</strong> & <strong>Sumit</strong></p>
+          <p class="cert-sub">Status: Anger cancelled • Friendship Restored • Good vibes only 🌸</p>
+        </div>
+        <button class="glow-btn" onclick="closeCelebration()">Big Hug & Thank You! 🤗</button>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <p>Crafted with lots of care, apology, and friendship for <strong>Mugdha</strong> ✨</p>
+      <p class="footer-sub">Song: <em>Maafi</em> by Shreya Ghoshal & Shantanu Moitra</p>
+    </footer>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
